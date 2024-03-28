@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "proj"
+version = "0.1.0"
+description = ""
+authors = ["Weixiang Yu <astro.flyfish@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+ipykernel = "^6.27.0"
+pre-commit = "^3.5.0"
+black = "^23.11.0"
+ruff = "^0.1.6"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.jupytext]
+formats = "ipynb,py:percent"
+notebook_metadata_filter="-all"
+
+[tool.black]
+target-version = ["py311"]
+line-length = 88
+
+[tool.ruff]
+target-version = "py311"
+line-length = 88
+ignore = [
+    "E741",    # Allow ambiguous variable names
+    "PLR0911", # Allow many return statements
+    "PLR0913", # Allow many arguments to functions
+    "PLR0915", # Allow many statements
+    "PLR2004", # Allow magic numbers in comparisons
+]
+exclude = []
