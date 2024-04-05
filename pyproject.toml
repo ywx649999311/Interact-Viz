@@ -35,5 +35,6 @@ ignore = [
     "PLR0913", # Allow many arguments to functions
     "PLR0915", # Allow many statements
     "PLR2004", # Allow magic numbers in comparisons
+    "E402", # All import in cells (not top of file)
 ]
 exclude = []
