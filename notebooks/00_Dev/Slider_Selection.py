@@ -8,13 +8,14 @@ from bokeh.io import show, output_notebook
 output_notebook()
 
 # %%
+from bokeh.sampledata.penguins import data
+
 data
 
 # %%
 from bokeh.layouts import gridplot
 from bokeh.models import ColumnDataSource, RangeSlider, CustomJS
-from bokeh.plotting import figure, show
-from bokeh.sampledata.penguins import data
+from bokeh.plotting import figure
 from bokeh.transform import factor_cmap
 
 SPECIES = sorted(data.species.unique())
@@ -65,14 +66,14 @@ range_slider.js_on_change(
     var start = this.value[0];
     var end = this.value[1];
     let s1_data = s1.data;
-    
+
     let indicesInRange = [];
     for (let i = 0; i < s1_data.index.length; i++) {
         if (s1_data.bill_depth_mm[i] >= start && s1_data.bill_depth_mm[i] <= end) {
             indicesInRange.push(i); // If it does, push the index to the array
         }
     }
-    
+
     const new_data = {};
     Object.keys(s1_data).forEach(key=> {
         new_data[key] = Array.from(indicesInRange, (i) => s1.data[key][i])
